@@ -128,10 +128,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: -WheelReel-
       objectReference: {fileID: 0}
-    - target: {fileID: 2548284509970754964, guid: 1a3d3715056c4e848996702ccb3434b2, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 136cf5e4c018de2438bb08e5fe1f9660, type: 2}
     - target: {fileID: 6792951471440933793, guid: 1a3d3715056c4e848996702ccb3434b2, type: 3}
       propertyPath: m_LocalPosition.x
       value: -1.42

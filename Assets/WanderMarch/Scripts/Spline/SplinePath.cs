@@ -10,7 +10,7 @@ namespace WanderMarch.Scripts.Spline
         [SerializeField, Range(0.0f, 1.0f), Tooltip("Used to visualize point along path")]
         private float tTest;
 
-
+#if UNITY_EDITOR
         private void OnDrawGizmos()
         {
             spline.DrawGizmo();
@@ -20,5 +20,6 @@ namespace WanderMarch.Scripts.Spline
             
            Gizmos.DrawSphere(testPoint.position, 0.1f);
         }
+        #endif
     }
 }

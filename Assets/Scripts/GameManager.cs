@@ -3,16 +3,20 @@ using System.Collections.Generic;
 using UnityEngine;
 using WanderMarch.Scripts.App;
 using UnityEngine.Events;
+using UnityEngine.InputSystem.Interactions;
+using UnityEngine.UIElements;
+using WanderMarch.Scripts.ActionList;
 
 namespace WanderMarch.WBTF
 {
-    
-    
     public class GameManager : Singleton<GameManager>
     {
         [SerializeField, ShowOnly] private GamePhases currentPhase = GamePhases.Invalid;
 
+        [SerializeField] private GameObject debugPanel;
         private GamePhase _currentPhase;
+
+        private BoolAction _debugToggle;
         
         // Start is called before the first frame update
         void Start()
@@ -22,11 +26,13 @@ namespace WanderMarch.WBTF
             //Placeholder initialize
             ChangePhase(new BaitingPhase());
 
+            _debugToggle = InputManager.Instance.GetInput("Fishing", "Debug") as BoolAction;
+
         }
 
-        public bool ChangePhase(GamePhase newPhase)
+        public void ChangePhase(GamePhase newPhase)
         {
-            if (currentPhase == newPhase.phase) return false;
+            if (currentPhase == newPhase.phase) return;
             
             if (currentPhase != GamePhases.Invalid)
                 _currentPhase.Exit(newPhase.phase);
@@ -35,15 +41,17 @@ namespace WanderMarch.WBTF
             _currentPhase = newPhase;
             currentPhase = _currentPhase.phase;
             
-            WBTF_Events.PhaseChange.Invoke(currentPhase);
             
-            return true;
+            WBTF_Events.PhaseChange.Invoke(currentPhase);
         }
 
         // Update is called once per frame
         void Update()
         {
             _currentPhase.Update(Time.deltaTime);
+            
+            if(_debugToggle.IsTriggered)
+                debugPanel.SetActive(!debugPanel.activeSelf);
         }
     }
 
@@ -52,7 +60,6 @@ namespace WanderMarch.WBTF
         Invalid = -1,
         Baiting,
         Fishing,
-        Reeling,
         Scoring,
     }
     
@@ -114,6 +121,31 @@ namespace WanderMarch.WBTF
         {
             base.Enter(previous);
             InputManager.Instance.SwapInputMaps("Fishing");
+        }
+    }
+
+    public class ScoringPhase : GamePhase
+    {
+        private BoolAction _castAction;
+        
+        public ScoringPhase()
+        {
+            phase = GamePhases.Scoring;
+            _castAction = InputManager.Instance.GetInput("Fishing", "Action") as BoolAction;
+        }
+
+        public override bool Update(float dt)
+        {
+            if (!base.Update(dt)) return false; 
+
+            if (_castAction.IsTriggered)
+            {
+                GameManager.Instance.ChangePhase(new BaitingPhase());
+                return false;
+            }
+
+            return true;
+
         }
     }
     

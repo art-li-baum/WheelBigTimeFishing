@@ -116,6 +116,7 @@ namespace WanderMarch.Scripts.Spline
             return new OrientedPoint(Vector3.Lerp(d, e, t), (e - d).normalized);
         }
 
+        #if UNITY_EDITOR
         public void DrawGizmo()
         {
             for (int i = 0; i < 4; i++)
@@ -135,6 +136,7 @@ namespace WanderMarch.Scripts.Spline
                 
             );
         }
+        #endif
     }
 
     public struct OrientedPoint

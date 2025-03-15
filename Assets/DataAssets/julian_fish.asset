@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2653f884bb13c0643b31600a3704e410, type: 3}
+  m_Name: julian_fish
+  m_EditorClassIdentifier: 
+  fishData:
+    fishName: Uncle Fish
+    fishStats: {x: 2, y: 1, z: 2}
+    fishTexture: {fileID: 2800000, guid: f09cdbb6b3c71de46922854f6bdffeba, type: 3}
+    fishSize: 1
+    fishRarity: 4
+  sizeRange: {x: 0, y: 1}
+  numInPool: 0
