@@ -36,13 +36,16 @@ namespace WanderMarch.WBTF
 
         private void MoveHook(Vector3 position)
         {
-            ActionList.Instance.QueueAction(new MoveAction(_hook,_hook.position + (position / (boxScale * 2f)),0.2f));
+            ActionList.Instance.QueueAction(new MoveAction(_hook,_hook.position + (position / (boxScale * 2f)),0.2f,true));
+            ActionList.Instance.QueueAction(new ActivateAction(_lineRenderer.gameObject,false));
             //_hook.localPosition = position / (boxScale * 2f);
         }
 
         public void ShowValue(WheelPayload wp)
         {
-            _lineRenderer.SetPosition(1, wp.TotalValue/(boxScale * 2f));
+            _lineRenderer.gameObject.SetActive(true);
+            _lineRenderer.SetPosition(0, _hook.localPosition);
+            _lineRenderer.SetPosition(1, _hook.localPosition + wp.TotalValue/(boxScale * 2f));
         }
 
         public void UpdateFishualizer(GamePhases phase)

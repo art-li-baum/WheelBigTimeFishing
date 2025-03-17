@@ -27,7 +27,8 @@ namespace WanderMarch.WBTF
             ChangePhase(new BaitingPhase());
 
             _debugToggle = InputManager.Instance.GetInput("Fishing", "Debug") as BoolAction;
-
+    
+            debugPanel.SetActive(false);
         }
 
         public void ChangePhase(GamePhase newPhase)

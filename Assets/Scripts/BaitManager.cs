@@ -20,12 +20,13 @@ namespace WanderMarch.WBTF
         {
             base.Awake();
 
-            SetBait(defaultBait);
+           
         }
 
         private void Start()
         {
             WBTF_Events.PhaseChange.AddListener(SetAvailable);
+            SetBait(defaultBait);
         }
 
         private void OnDisable()

@@ -23,6 +23,8 @@ namespace WanderMarch.WBTF
         public void AddFish2Pool(FishSO fish2add)
         {
             var fd = new FishData(fish2add);
+            
+            
             WBTF_Events.FishAdded2Pool.Invoke(fd);
             _poolFish.Add(fd);
             ++fish2add.numInPool;

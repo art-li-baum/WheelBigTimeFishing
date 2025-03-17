@@ -10,12 +10,12 @@ namespace WanderMarch.WBTF
         [SerializeField] private GameObject panelPrefab;
         
         // Start is called before the first frame update
-        void OnEnable()
+        void Awake()
         {
             WBTF_Events.FishAdded2Pool.AddListener(AddFish);
         }
 
-        private void OnDisable()
+        private void OnDestroy()
         {
             WBTF_Events.FishAdded2Pool.RemoveListener(AddFish);
         }
