@@ -7,8 +7,7 @@ namespace WanderMarch.WBTF
 {
     public class FishPool : Singleton<FishPool>
     {
-
-        [field:SerializeField] public List<FishSO> possibleFish { get; private set; }
+        [field:SerializeField] public List<Fish> possibleFish { get; private set; }
 
         private List<FishData> _poolFish = new();
 
@@ -18,14 +17,15 @@ namespace WanderMarch.WBTF
         void Start()
         {
             PopulateFish();
+            
         }
 
-        public void AddFish2Pool(FishSO fish2add)
+        public void AddFish2Pool(Fish fish2add)
         {
             var fd = new FishData(fish2add);
             
-            
             WBTF_Events.FishAdded2Pool.Invoke(fd);
+            
             _poolFish.Add(fd);
             ++fish2add.numInPool;
         }
@@ -40,7 +40,7 @@ namespace WanderMarch.WBTF
 
             var randomNumber = Random.Range(0, totalWeight);
 
-            FishSO fishType = null; 
+            Fish fishType = null; 
             
             foreach (var pull in pulls)
             {
@@ -70,10 +70,19 @@ namespace WanderMarch.WBTF
 
             return selectedFish;
         }
-
-
+        
         private void PopulateFish()
         {
+            //pull fish textures of a size
+            
+            //randomize rarity
+            //add size range 
+            
+            
+            
+            
+            //for each texutre create a fish in possible fish
+            
             foreach (var fish in possibleFish)
             {
                 var number = Mathf.RoundToInt((int)fish.fishData.fishRarity * Random.Range(0.65f,1.25f));
@@ -113,12 +122,12 @@ namespace WanderMarch.WBTF
 
         public struct Pull
         {
-            public Pull(FishSO f, float w)
+            public Pull(Fish f, float w)
             {
                 fish = f;
                 weight = w;
             }
-            public FishSO fish;
+            public Fish fish;
             public float weight;
         }
     }

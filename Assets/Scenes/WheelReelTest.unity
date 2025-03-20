@@ -591,15 +591,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9b8d11c5591cfb4b9b0ffd585814774, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <possibleFish>k__BackingField:
-  - {fileID: 11400000, guid: af593d8db30b60f479c6ea3fda46956e, type: 2}
-  - {fileID: 11400000, guid: 7c897346ee2c45249a0ad2df42ef15e2, type: 2}
-  - {fileID: 11400000, guid: 637a08f56ddf79641848aafe7620f160, type: 2}
-  - {fileID: 11400000, guid: c21715051d74d894b985f3824f478381, type: 2}
-  - {fileID: 11400000, guid: 79206af20fd46ba44821ab6588c604de, type: 2}
-  - {fileID: 11400000, guid: 06946540826326a478f08dab35ed83da, type: 2}
-  - {fileID: 11400000, guid: 454681428c6fb3f4b9a20df67c8b30af, type: 2}
-  - {fileID: 11400000, guid: d399a1c37f424f64c9c7dff9ab3ca5d9, type: 2}
   threshold: 3
 --- !u!1 &579864764
 GameObject:
@@ -4596,6 +4587,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: --RealWheelRod--
       objectReference: {fileID: 0}
+    - target: {fileID: 3611682532980983741, guid: 0791936ea585b4a4d82ab9ed39b859d5, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5204816880858341851, guid: 0791936ea585b4a4d82ab9ed39b859d5, type: 3}
       propertyPath: m_LocalPosition.x
       value: 5.14
@@ -4905,6 +4900,10 @@ PrefabInstance:
     - target: {fileID: 5057312909292284583, guid: 50cc6e9df68ba834086b858a345508b7, type: 3}
       propertyPath: m_Name
       value: --Fishualizer--
+      objectReference: {fileID: 0}
+    - target: {fileID: 5057312909292284583, guid: 50cc6e9df68ba834086b858a345508b7, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7195265759704359813, guid: 50cc6e9df68ba834086b858a345508b7, type: 3}
       propertyPath: m_LocalRotation.w
